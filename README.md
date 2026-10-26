@@ -2,9 +2,9 @@
 
 一个适用于 Windows 的 Codex 用量桌面悬浮窗。由 PowerShell 和 WPF 实现，通过 [ccusage](https://github.com/ccusage/ccusage) 读取本机 Codex 会话记录的汇总结果。
 
-![公开版界面示意图，数值为模拟数据](docs/preview.svg)
+![基于实际运行截图制作的脱敏展示图](docs/runtime-preview-sanitized.png)
 
-> 上图根据公开版界面绘制，数值为模拟数据，并非程序运行截图。
+> 上图基于实际运行截图制作。原角色图片已替换，费用和 Token 数值均为模拟数据；它不是未经处理的原始截图。[查看简化界面示意图](docs/preview.svg)。
 
 ## 功能
 

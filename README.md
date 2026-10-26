@@ -2,6 +2,10 @@
 
 一个适用于 Windows 的 Codex 用量桌面悬浮窗。由 PowerShell 和 WPF 实现，通过 [ccusage](https://github.com/ccusage/ccusage) 读取本机 Codex 会话记录的汇总结果。
 
+![公开版界面示意图，数值为模拟数据](docs/preview.svg)
+
+> 上图根据公开版界面绘制，数值为模拟数据，并非程序运行截图。
+
 ## 功能
 
 - 显示当日总 Token、输入 Token、输出 Token、缓存 Token 和估算美元费用。

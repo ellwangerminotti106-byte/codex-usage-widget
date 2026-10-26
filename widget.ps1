@@ -59,9 +59,12 @@ $xaml = @'
                      Margin="0,0,0,2" Visibility="Collapsed"/>
           <TextBlock x:Name="TxtTime" Text="" Foreground="#8D6E63" FontSize="11"/>
         </StackPanel>
-        <Image x:Name="IconBolt" Grid.Column="1" Height="115"
-               VerticalAlignment="Center" HorizontalAlignment="Center"
-               Margin="0,8,0,0" IsHitTestVisible="False"/>
+        <Grid Grid.Column="1" Height="115" Margin="0,8,0,0" IsHitTestVisible="False">
+          <TextBlock x:Name="IconBolt" Text="⚡" FontSize="66" Foreground="#E67E22"
+                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+          <Image x:Name="CharacterImage" Height="115" Visibility="Collapsed"
+                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
       </Grid>
       <Border Height="1" Background="#88FFFFFF" Margin="0,8,0,8"/>
       <Grid>
@@ -112,9 +115,23 @@ $PnlChart = $window.FindName("PnlChart")
 $BtnClose   = $window.FindName("BtnClose")
 $BtnRefresh = $window.FindName("BtnRefresh")
 $IconBolt = $window.FindName("IconBolt")
+$CharacterImage = $window.FindName("CharacterImage")
 $bc = New-Object System.Windows.Media.BrushConverter
+$animatedVisual = $IconBolt
+foreach ($imageName in @("character.png", "zenitsu.png")) {
+    $imagePath = Join-Path $PSScriptRoot $imageName
+    if (Test-Path $imagePath) {
+        try {
+            $CharacterImage.Source = New-Object System.Windows.Media.Imaging.BitmapImage([Uri]$imagePath)
+            $CharacterImage.Visibility = "Visible"
+            $IconBolt.Visibility = "Collapsed"
+            $animatedVisual = $CharacterImage
+            break
+        } catch { }
+    }
+}
 $tt = New-Object System.Windows.Media.TranslateTransform
-$IconBolt.RenderTransform = $tt
+$animatedVisual.RenderTransform = $tt
 $anim = New-Object System.Windows.Media.Animation.DoubleAnimation(0, -8, [TimeSpan]::FromSeconds(1.2))
 $anim.AutoReverse = $true
 $anim.RepeatBehavior = [System.Windows.Media.Animation.RepeatBehavior]::Forever
